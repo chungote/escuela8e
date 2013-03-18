@@ -132,6 +132,8 @@ public class HistorialMedico implements Serializable {
     private String antecedentesFamilia;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "historialMedico")
     private Collection<Alumno> alumnoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "historialMedico")
+    private Collection<Docente> docenteCollection;
 
     public HistorialMedico() {
     }
@@ -301,6 +303,15 @@ public class HistorialMedico implements Serializable {
 
     public void setAlumnoCollection(Collection<Alumno> alumnoCollection) {
         this.alumnoCollection = alumnoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Docente> getDocenteCollection() {
+        return docenteCollection;
+    }
+
+    public void setDocenteCollection(Collection<Docente> docenteCollection) {
+        this.docenteCollection = docenteCollection;
     }
 
     @Override
