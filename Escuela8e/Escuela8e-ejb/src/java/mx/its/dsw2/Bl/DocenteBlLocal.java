@@ -4,7 +4,10 @@
  */
 package mx.its.dsw2.Bl;
 
+import java.util.List;
 import javax.ejb.Local;
+import mx.its.dsw2.Modelo.Docente;
+import mx.its.dsw2.biblioteca.enumeracion.estadoHistorialMedico;
 
 /**
  *
@@ -12,5 +15,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface DocenteBlLocal {
-    
+    estadoHistorialMedico register(Docente teaching);
+
+    estadoHistorialMedico modify(Docente teaching);
+
+    estadoHistorialMedico delete(Docente teaching);
+
+    List<Docente> getAll();
 }

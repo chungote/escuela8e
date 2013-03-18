@@ -2,15 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.its.dsw2.Bl;
-
-import javax.ejb.Local;
+package mx.its.dsw2.biblioteca.enumeracion;
 
 /**
  *
  * @author franciscojavier
  */
-@Local
-public interface HistorialMedicoLocal {
+public enum estadoHistorialMedico {
+    COMPLETO,
+    INCOMPLETO;
     
 }
