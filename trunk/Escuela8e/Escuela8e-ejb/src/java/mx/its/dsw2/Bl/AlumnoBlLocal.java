@@ -4,8 +4,10 @@
  */
 package mx.its.dsw2.Bl;
 
+import java.util.List;
 import javax.ejb.Local;
 import mx.its.dsw2.Modelo.Alumno;
+import mx.its.dsw2.biblioteca.enumeracion.estadoHistorialMedico;
 
 /**
  *
@@ -14,6 +16,12 @@ import mx.its.dsw2.Modelo.Alumno;
 @Local
 public interface AlumnoBlLocal {
 
-    void Register(Alumno student);
+    estadoHistorialMedico register(Alumno student);
+
+    estadoHistorialMedico modify(Alumno student);
+
+    estadoHistorialMedico delete(Alumno student);
+
+    List<Alumno> getAll();
     
 }

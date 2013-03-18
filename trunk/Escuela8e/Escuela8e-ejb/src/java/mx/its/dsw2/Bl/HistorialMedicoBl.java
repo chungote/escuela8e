@@ -7,8 +7,8 @@ package mx.its.dsw2.Bl;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import mx.its.dsw2.Dao.DocenteDaoLocal;
-import mx.its.dsw2.Modelo.Docente;
+import mx.its.dsw2.Dao.HistorialMedicoDaoLocal;
+import mx.its.dsw2.Modelo.HistorialMedico;
 import mx.its.dsw2.biblioteca.enumeracion.estadoHistorialMedico;
 
 /**
@@ -16,17 +16,17 @@ import mx.its.dsw2.biblioteca.enumeracion.estadoHistorialMedico;
  * @author franciscojavier
  */
 @Stateless
-public class DocenteBl implements DocenteBlLocal {
+public class HistorialMedicoBl implements HistorialMedicoBlLocal {
     @EJB
-    private DocenteDaoLocal docenteDao;
+    private HistorialMedicoDaoLocal historialMedicoDao;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-public estadoHistorialMedico register(Docente teaching) {
-        if(docenteDao.findDuplicity(teaching)){
+public estadoHistorialMedico register(HistorialMedico medicalhistory) {
+        if(historialMedicoDao.findDuplicity(medicalhistory)){
            return estadoHistorialMedico.INCOMPLETO;
        }else{
-           docenteDao.create(teaching);
+           historialMedicoDao.create(medicalhistory);
            return estadoHistorialMedico.COMPLETO;
        }
     }
@@ -35,29 +35,29 @@ public estadoHistorialMedico register(Docente teaching) {
     // "Insert Code > Add Business Method")
 
     @Override
-    public estadoHistorialMedico modify(Docente teaching) {
-        if(teaching.getDocentePK()==null || docenteDao.find(teaching.getDocentePK())==null){
+    public estadoHistorialMedico modify(HistorialMedico medicalhistory) {
+        if(medicalhistory.getId()==null || historialMedicoDao.find(medicalhistory.getId())==null){
         return estadoHistorialMedico.INCOMPLETO;
         }
         else{
-            docenteDao.edit(teaching);
+            historialMedicoDao.edit(medicalhistory);
             return estadoHistorialMedico.COMPLETO;
         }
     }
 
     @Override
-    public estadoHistorialMedico delete(Docente teaching) {
-        if(teaching.getDocentePK()==null || docenteDao.find(teaching.getDocentePK())==null){
+    public estadoHistorialMedico delete(HistorialMedico medicalhistory) {
+        if(medicalhistory.getId()==null || historialMedicoDao.find(medicalhistory.getId())==null){
         return estadoHistorialMedico.INCOMPLETO;
         }
         else{
-            docenteDao.remove(teaching);
+            historialMedicoDao.remove(medicalhistory);
             return estadoHistorialMedico.COMPLETO;
         }
     }
 
     @Override
-    public List<Docente> getAll() {
-        return docenteDao.findAll();
+    public List<HistorialMedico> getAll() {
+        return historialMedicoDao.findAll();
     }
 }

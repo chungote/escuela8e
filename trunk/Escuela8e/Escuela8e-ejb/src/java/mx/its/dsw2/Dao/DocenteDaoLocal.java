@@ -6,6 +6,7 @@ package mx.its.dsw2.Dao;
 
 import java.util.List;
 import javax.ejb.Local;
+import mx.its.dsw2.Modelo.Alumno;
 import mx.its.dsw2.Modelo.Docente;
 
 /**
@@ -28,5 +29,6 @@ public interface DocenteDaoLocal {
     List<Docente> findRange(int[] range);
 
     int count();
+    boolean findDuplicity(Docente teaching);
     
 }

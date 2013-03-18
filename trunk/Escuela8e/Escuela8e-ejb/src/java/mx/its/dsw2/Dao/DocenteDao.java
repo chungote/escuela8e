@@ -7,6 +7,8 @@ package mx.its.dsw2.Dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import mx.its.dsw2.Modelo.Alumno;
 import mx.its.dsw2.Modelo.Docente;
 
 /**
@@ -26,5 +28,13 @@ public class DocenteDao extends AbstractDao<Docente> implements DocenteDaoLocal 
     public DocenteDao() {
         super(Docente.class);
     }
+    public boolean findDuplicity(Docente teaching){
+        Query q = em.createNamedQuery("Docente.findDuplicity");
+        q.setParameter("nombre", teaching.getNombre());
+        q.setParameter("apellidoMaterno", teaching.getApellidoMaterno());
+        q.setParameter("apellidoPaterno", teaching.getApellidoPaterno());
+        return !q.getResultList().isEmpty();
+    }
+    
     
 }
