@@ -9,7 +9,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import mx.its.dsw2.Dao.HistorialMedicoDaoLocal;
 import mx.its.dsw2.Modelo.HistorialMedico;
-import mx.its.dsw2.biblioteca.enumeracion.estadoHistorialMedico;
+import mx.its.dsw2.escuela.enumeracion.estadoHistorialMedico;
 
 /**
  *
