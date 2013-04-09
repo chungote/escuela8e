@@ -58,6 +58,6 @@ public class AlumnoBl implements AlumnoBlLocal {
     @Override
     public List<Alumno> getAll() {
         return alumnoDao.findAll();
-    }
+    }  
     
 }
