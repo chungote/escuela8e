@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./TemplatePrincipal.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Crear/Editar"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Id:" for="id" />
+                            <h:inputText id="id" value="#{medicalHistoryBean.medicalHistory.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
+                            <h:outputLabel value="Fecha:" for="fecha" />
+                            <h:inputText id="fecha" value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha" required="true" requiredMessage="The Fecha field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="Hora:" for="hora" />
+                            <h:inputText id="hora" value="#{medicalHistoryBean.medicalHistory.hora}" title="Hora" required="true" requiredMessage="The Hora field is required.">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:inputText>
+                            <h:outputLabel value="Nombre:" for="nombre" />
+                            <h:inputText id="nombre" value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                            <h:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
+                            <h:inputText id="apellidoPaterno" value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required."/>
+                            <h:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
+                            <h:inputText id="apellidoMaterno" value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno" />
+                            <h:outputLabel value="Edad:" for="edad" />
+                            <h:inputText id="edad" value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
+                            <h:outputLabel value="Sexo:" for="sexo" />
+                            <h:inputText id="sexo" value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo" required="true" requiredMessage="The Sexo field is required."/>
+                            <h:outputLabel value="Peso:" for="peso" />
+                            <h:inputText id="peso" value="#{medicalHistoryBean.medicalHistory.peso}" title="Peso" required="true" requiredMessage="The Peso field is required."/>
+                            <h:outputLabel value="Estatura:" for="estatura" />
+                            <h:inputText id="estatura" value="#{medicalHistoryBean.medicalHistory.estatura}" title="Estatura" required="true" requiredMessage="The Estatura field is required."/>
+                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <h:inputText id="fechaNacimiento" value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required."/>
+                            <h:outputLabel value="Telefono:" for="telefono" />
+                            <h:inputText id="telefono" value="#{medicalHistoryBean.medicalHistory.telefono}" title="Telefono" />
+                            <h:outputLabel value="PadeceEnfermedad:" for="padeceEnfermedad" />
+                            <h:inputText id="padeceEnfermedad" value="#{medicalHistoryBean.medicalHistory.padeceEnfermedad}" title="PadeceEnfermedad" required="true" requiredMessage="The PadeceEnfermedad field is required."/>
+                            <h:outputLabel value="TomaAlgunMedicamento:" for="tomaAlgunMedicamento" />
+                            <h:inputText id="tomaAlgunMedicamento" value="#{medicalHistoryBean.medicalHistory.tomaAlgunMedicamento}" title="TomaAlgunMedicamento" required="true" requiredMessage="The TomaAlgunMedicamento field is required."/>
+                            <h:outputLabel value="VacunasAdministradas:" for="vacunasAdministradas" />
+                            <h:inputText id="vacunasAdministradas" value="#{medicalHistoryBean.medicalHistory.vacunasAdministradas}" title="VacunasAdministradas" required="true" requiredMessage="The VacunasAdministradas field is required."/>
+                            <h:outputLabel value="NombreVacunas:" for="nombreVacunas" />
+                            <h:inputText id="nombreVacunas" value="#{medicalHistoryBean.medicalHistory.nombreVacunas}" title="NombreVacunas" required="true" requiredMessage="The NombreVacunas field is required."/>
+                            <h:outputLabel value="AntecedentesFamilia:" for="antecedentesFamilia" />
+                            <h:inputText id="antecedentesFamilia" value="#{medicalHistoryBean.medicalHistory.antecedentesFamilia}" title="AntecedentesFamilia" required="true" requiredMessage="The AntecedentesFamilia field is required."/>
+                            <h:commandButton action="HistorialMedicConfirmar" value="Aceptar"/>
+                            <h:commandButton action="HistorialMedicLista" value="Cancelar" immediate="true"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

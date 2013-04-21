@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./TemplatePrincipal.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value=""/></h1>
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputText value="NoControl:"/>
+                            <h:outputText value="#{studentBean.student.noControl}" title="NoControl"/>
+                            <h:outputText value="Nombre:"/>
+                            <h:outputText value="#{studentBean.student.nombre}" title="Nombre"/>
+                            <h:outputText value="ApellidoPaterno:"/>
+                            <h:outputText value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno"/>
+                            <h:outputText value="ApellidoMaterno:"/>
+                            <h:outputText value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <h:outputText value="Telefono:"/>
+                            <h:outputText value="#{studentBean.student.telefono}" title="Telefono"/>
+                            <h:outputText value="Direccion:"/>
+                            <h:outputText value="#{studentBean.student.direccion}" title="Direccion"/>
+                            <h:outputText value="Colonia:"/>
+                            <h:outputText value="#{studentBean.student.colonia}" title="Colonia"/>
+                            <h:outputText value="CodigoPostal:"/>
+                            <h:outputText value="#{studentBean.student.codigoPostal}" title="CodigoPostal"/>
+                            <h:outputText value="FechaNacimiento:"/>
+                            <h:outputText value="#{studentBean.student.fechaNacimiento}" title="FechaNacimiento"/>
+                            <h:outputText value="IdHistorialMedico:"/>
+                            <h:outputText value="#{studentBean.student.idHistorialMedico}" title="IdHistorialMedico"/>
+                            <h:commandButton action="#{studentBean.procesarAccion}" value="Aceptar"/>
+                            <h:commandButton action="AlumnoCrearEditar" value="Cancelar"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

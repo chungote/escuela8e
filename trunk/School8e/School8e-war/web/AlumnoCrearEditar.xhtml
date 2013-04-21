@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./TemplatePrincipal.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Crear/Editar"/></h1>
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputLabel value="NoControl:" for="noControl" />
+                            <h:inputText id="noControl" value="#{studentBean.student.noControl}" title="NoControl" required="true" requiredMessage="The NoControl field is required."/>
+                            <h:outputLabel value="Nombre:" for="nombre" />
+                            <h:inputText id="nombre" value="#{studentBean.student.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                            <h:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
+                            <h:inputText id="apellidoPaterno" value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required."/>
+                            <h:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
+                            <h:inputText id="apellidoMaterno" value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno" />
+                            <h:outputLabel value="Telefono:" for="telefono" />
+                            <h:inputText id="telefono" value="#{studentBean.student.telefono}" title="Telefono" />
+                            <h:outputLabel value="Direccion:" for="direccion" />
+                            <h:inputText id="direccion" value="#{studentBean.student.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                            <h:outputLabel value="Colonia:" for="colonia" />
+                            <h:inputText id="colonia" value="#{studentBean.student.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required."/>
+                            <h:outputLabel value="CodigoPostal:" for="codigoPostal" />
+                            <h:inputText id="codigoPostal" value="#{studentBean.student.codigoPostal}" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required."/>
+                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <h:inputText id="fechaNacimiento" value="#{studentBean.student.fechaNacimiento}" title="FechaNacimiento" />
+                            <h:outputLabel value="IdHistorialMedico:" for="idHistorialMedico" />
+                            <h:selectOneMenu id="idHistorialMedico" value="#{studentBean.student.idHistorialMedico}" title="IdHistorialMedico" required="true" requiredMessage="The IdHistorialMedico field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </h:selectOneMenu>
+                            <h:commandButton action="AlumnoConfirmar" value="Aceptar"/>
+                            <h:commandButton action="AlumnoLista" value="Cancelar" immediate="true"/> 
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                               
+                 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

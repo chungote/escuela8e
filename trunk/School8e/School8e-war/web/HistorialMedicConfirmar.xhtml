@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./TemplatePrincipal.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="View"/></h1>
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputText value="Fecha:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <h:outputText value="Hora:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.hora}" title="Hora">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                            <h:outputText value="Nombre:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre"/>
+                            <h:outputText value="ApellidoPaterno:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno"/>
+                            <h:outputText value="ApellidoMaterno:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <h:outputText value="Edad:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
+                            <h:outputText value="Sexo:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo"/>
+                            <h:outputText value="Peso:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.peso}" title="Peso"/>
+                            <h:outputText value="Estatura:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.estatura}" title="Estatura"/>
+                            <h:outputText value="FechaNacimiento:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento"/>
+                            <h:outputText value="Telefono:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.telefono}" title="Telefono"/>
+                            <h:outputText value="PadeceEnfermedad:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.padeceEnfermedad}" title="PadeceEnfermedad"/>
+                            <h:outputText value="TomaAlgunMedicamento:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.tomaAlgunMedicamento}" title="TomaAlgunMedicamento"/>
+                            <h:outputText value="VacunasAdministradas:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.vacunasAdministradas}" title="VacunasAdministradas"/>
+                            <h:outputText value="NombreVacunas:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.nombreVacunas}" title="NombreVacunas"/>
+                            <h:outputText value="AntecedentesFamilia:"/>
+                            <h:outputText value="#{medicalHistoryBean.medicalHistory.antecedentesFamilia}" title="AntecedentesFamilia"/>
+                            <h:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar"/>
+                            <h:commandButton action="HistorialMedicCrearEditar" value="Cancelar"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
