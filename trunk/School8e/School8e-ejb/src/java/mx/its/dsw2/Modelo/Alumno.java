@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Alumno.findByColonia", query = "SELECT a FROM Alumno a WHERE a.colonia = :colonia"),
     @NamedQuery(name = "Alumno.findByCodigoPostal", query = "SELECT a FROM Alumno a WHERE a.codigoPostal = :codigoPostal"),
     @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento")})
+    //@NamedQuery(name = "Alumno.findDuplicity", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre AND a.apellidoMaterno = :apellidoMaterno AND a.apellidoPaterno = :apellidoPaterno")})
 public class Alumno implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
