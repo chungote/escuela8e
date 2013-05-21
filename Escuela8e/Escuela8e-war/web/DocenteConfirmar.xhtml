@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
@@ -16,7 +18,37 @@
             </ui:define>
 
             <ui:define name="content">
-                content
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value=""/></h1>
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputText value="NoControl:"/>
+                            <h:outputText value="#{teachingBean.teaching.noControl}" title="NoControl"/>
+                            <h:outputText value="Nombre:"/>
+                            <h:outputText value="#{teachingBean.teaching.nombre}" title="Nombre"/>
+                            <h:outputText value="ApellidoPaterno:"/>
+                            <h:outputText value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno"/>
+                            <h:outputText value="ApellidoMaterno:"/>
+                            <h:outputText value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <h:outputText value="Telefono:"/>
+                            <h:outputText value="#{teachingBean.teaching.telefono}" title="Telefono"/>
+                            <h:outputText value="Direccion:"/>
+                            <h:outputText value="#{teachingBean.teaching.direccion}" title="Direccion"/>
+                            <h:outputText value="Colonia:"/>
+                            <h:outputText value="#{teachingBean.teaching.colonia}" title="Colonia"/>
+                            <h:outputText value="CodigoPostal:"/>
+                            <h:outputText value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal"/>
+                            <h:outputText value="FechaNacimiento:"/>
+                            <h:outputText value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento"/>
+                            <h:outputText value="IdPerfil:"/>
+                            <h:outputText value="#{teachingBean.teaching.idPerfil}" title="IdPerfil"/>
+                            <h:commandButton action="#{teachingBean.procesarAccion}" value="Aceptar"/>
+                            <h:commandButton action="DocenteCrearEditar" value="Cancelar"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
             </ui:define>
 
         </ui:composition>
