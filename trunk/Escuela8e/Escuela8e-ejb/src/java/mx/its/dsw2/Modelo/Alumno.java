@@ -7,8 +7,10 @@ package mx.its.dsw2.Modelo;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -27,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a"),
-    @NamedQuery(name = "Alumno.findByControl", query = "SELECT a FROM Alumno a WHERE a.alumnoPK.control = :control"),
+    @NamedQuery(name = "Alumno.findById", query = "SELECT a FROM Alumno a WHERE a.id = :id"),
+    @NamedQuery(name = "Alumno.findByNoControl", query = "SELECT a FROM Alumno a WHERE a.noControl = :noControl"),
     @NamedQuery(name = "Alumno.findByNombre", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre"),
     @NamedQuery(name = "Alumno.findByApellidoPaterno", query = "SELECT a FROM Alumno a WHERE a.apellidoPaterno = :apellidoPaterno"),
     @NamedQuery(name = "Alumno.findByApellidoMaterno", query = "SELECT a FROM Alumno a WHERE a.apellidoMaterno = :apellidoMaterno"),
@@ -36,11 +39,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Alumno.findByColonia", query = "SELECT a FROM Alumno a WHERE a.colonia = :colonia"),
     @NamedQuery(name = "Alumno.findByCodigoPostal", query = "SELECT a FROM Alumno a WHERE a.codigoPostal = :codigoPostal"),
     @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Alumno.findByHistorialMedicoid", query = "SELECT a FROM Alumno a WHERE a.alumnoPK.historialMedicoid = :historialMedicoid")})
+     @NamedQuery(name = "Alumno.findDuplicity", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre AND a.apellidoMaterno = :apellidoMaterno AND a.apellidoPaterno = :apellidoPaterno")})
 public class Alumno implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected AlumnoPK alumnoPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
+    @Column(name = "NoControl")
+    private String noControl;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -75,19 +86,20 @@ public class Alumno implements Serializable {
     @Size(max = 30)
     @Column(name = "fechaNacimiento")
     private String fechaNacimiento;
-    @JoinColumn(name = "HistorialMedico_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "idPerfil", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private HistorialMedico historialMedico;
+    private Perfil idPerfil;
 
     public Alumno() {
     }
 
-    public Alumno(AlumnoPK alumnoPK) {
-        this.alumnoPK = alumnoPK;
+    public Alumno(Integer id) {
+        this.id = id;
     }
 
-    public Alumno(AlumnoPK alumnoPK, String nombre, String apellidoPaterno, String direccion, String colonia, String codigoPostal) {
-        this.alumnoPK = alumnoPK;
+    public Alumno(Integer id, String noControl, String nombre, String apellidoPaterno, String direccion, String colonia, String codigoPostal) {
+        this.id = id;
+        this.noControl = noControl;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.direccion = direccion;
@@ -95,16 +107,20 @@ public class Alumno implements Serializable {
         this.codigoPostal = codigoPostal;
     }
 
-    public Alumno(String control, int historialMedicoid) {
-        this.alumnoPK = new AlumnoPK(control, historialMedicoid);
+    public Integer getId() {
+        return id;
     }
 
-    public AlumnoPK getAlumnoPK() {
-        return alumnoPK;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setAlumnoPK(AlumnoPK alumnoPK) {
-        this.alumnoPK = alumnoPK;
+    public String getNoControl() {
+        return noControl;
+    }
+
+    public void setNoControl(String noControl) {
+        this.noControl = noControl;
     }
 
     public String getNombre() {
@@ -171,18 +187,18 @@ public class Alumno implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public HistorialMedico getHistorialMedico() {
-        return historialMedico;
+    public Perfil getIdPerfil() {
+        return idPerfil;
     }
 
-    public void setHistorialMedico(HistorialMedico historialMedico) {
-        this.historialMedico = historialMedico;
+    public void setIdPerfil(Perfil idPerfil) {
+        this.idPerfil = idPerfil;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (alumnoPK != null ? alumnoPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -193,7 +209,7 @@ public class Alumno implements Serializable {
             return false;
         }
         Alumno other = (Alumno) object;
-        if ((this.alumnoPK == null && other.alumnoPK != null) || (this.alumnoPK != null && !this.alumnoPK.equals(other.alumnoPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -201,7 +217,7 @@ public class Alumno implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.its.dsw2.Modelo.Alumno[ alumnoPK=" + alumnoPK + " ]";
+        return "mx.its.dsw2.Modelo.Alumno[ id=" + id + " ]";
     }
     
 }
