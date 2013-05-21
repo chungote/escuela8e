@@ -7,8 +7,10 @@ package mx.its.dsw2.Modelo;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -27,8 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d"),
-    @NamedQuery(name = "Docente.findById", query = "SELECT d FROM Docente d WHERE d.docentePK.id = :id"),
-    @NamedQuery(name = "Docente.findByControl", query = "SELECT d FROM Docente d WHERE d.control = :control"),
+    @NamedQuery(name = "Docente.findById", query = "SELECT d FROM Docente d WHERE d.id = :id"),
+    @NamedQuery(name = "Docente.findByNoControl", query = "SELECT d FROM Docente d WHERE d.noControl = :noControl"),
     @NamedQuery(name = "Docente.findByNombre", query = "SELECT d FROM Docente d WHERE d.nombre = :nombre"),
     @NamedQuery(name = "Docente.findByApellidoPaterno", query = "SELECT d FROM Docente d WHERE d.apellidoPaterno = :apellidoPaterno"),
     @NamedQuery(name = "Docente.findByApellidoMaterno", query = "SELECT d FROM Docente d WHERE d.apellidoMaterno = :apellidoMaterno"),
@@ -37,16 +39,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Docente.findByColonia", query = "SELECT d FROM Docente d WHERE d.colonia = :colonia"),
     @NamedQuery(name = "Docente.findByCodigoPostal", query = "SELECT d FROM Docente d WHERE d.codigoPostal = :codigoPostal"),
     @NamedQuery(name = "Docente.findByFechaNacimiento", query = "SELECT d FROM Docente d WHERE d.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Docente.findByHistorialMedicoid", query = "SELECT d FROM Docente d WHERE d.docentePK.historialMedicoid = :historialMedicoid")})
+    @NamedQuery(name = "Docente.findDuplicity", query = "SELECT d FROM Docente d WHERE d.nombre = :nombre AND d.apellidoMaterno = :apellidoMaterno AND d.apellidoPaterno = :apellidoPaterno")})
 public class Docente implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected DocentePK docentePK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
-    @Column(name = "Control")
-    private String control;
+    @Column(name = "NoControl")
+    private String noControl;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -81,20 +86,20 @@ public class Docente implements Serializable {
     @Size(max = 30)
     @Column(name = "fechaNacimiento")
     private String fechaNacimiento;
-    @JoinColumn(name = "HistorialMedico_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "idPerfil", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private HistorialMedico historialMedico;
+    private Perfil idPerfil;
 
     public Docente() {
     }
 
-    public Docente(DocentePK docentePK) {
-        this.docentePK = docentePK;
+    public Docente(Integer id) {
+        this.id = id;
     }
 
-    public Docente(DocentePK docentePK, String control, String nombre, String apellidoPaterno, String direccion, String colonia, String codigoPostal) {
-        this.docentePK = docentePK;
-        this.control = control;
+    public Docente(Integer id, String noControl, String nombre, String apellidoPaterno, String direccion, String colonia, String codigoPostal) {
+        this.id = id;
+        this.noControl = noControl;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.direccion = direccion;
@@ -102,24 +107,20 @@ public class Docente implements Serializable {
         this.codigoPostal = codigoPostal;
     }
 
-    public Docente(int id, int historialMedicoid) {
-        this.docentePK = new DocentePK(id, historialMedicoid);
+    public Integer getId() {
+        return id;
     }
 
-    public DocentePK getDocentePK() {
-        return docentePK;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setDocentePK(DocentePK docentePK) {
-        this.docentePK = docentePK;
+    public String getNoControl() {
+        return noControl;
     }
 
-    public String getControl() {
-        return control;
-    }
-
-    public void setControl(String control) {
-        this.control = control;
+    public void setNoControl(String noControl) {
+        this.noControl = noControl;
     }
 
     public String getNombre() {
@@ -186,18 +187,18 @@ public class Docente implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public HistorialMedico getHistorialMedico() {
-        return historialMedico;
+    public Perfil getIdPerfil() {
+        return idPerfil;
     }
 
-    public void setHistorialMedico(HistorialMedico historialMedico) {
-        this.historialMedico = historialMedico;
+    public void setIdPerfil(Perfil idPerfil) {
+        this.idPerfil = idPerfil;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (docentePK != null ? docentePK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -208,7 +209,7 @@ public class Docente implements Serializable {
             return false;
         }
         Docente other = (Docente) object;
-        if ((this.docentePK == null && other.docentePK != null) || (this.docentePK != null && !this.docentePK.equals(other.docentePK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -216,7 +217,7 @@ public class Docente implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.its.dsw2.Modelo.Docente[ docentePK=" + docentePK + " ]";
+        return "mx.its.dsw2.Modelo.Docente[ id=" + id + " ]";
     }
     
 }
