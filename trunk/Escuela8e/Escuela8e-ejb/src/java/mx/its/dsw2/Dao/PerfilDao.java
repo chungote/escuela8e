@@ -8,14 +8,14 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import mx.its.dsw2.Modelo.Docente;
+import mx.its.dsw2.Modelo.Perfil;
 
 /**
  *
  * @author franciscojavier
  */
 @Stateless
-public class DocenteDao extends AbstractDao<Docente> implements DocenteDaoLocal {
+public class PerfilDao extends AbstractDao<Perfil> implements PerfilDaoLocal {
     @PersistenceContext(unitName = "Escuela8e-ejbPU")
     private EntityManager em;
 
@@ -24,15 +24,15 @@ public class DocenteDao extends AbstractDao<Docente> implements DocenteDaoLocal 
         return em;
     }
 
-    public DocenteDao() {
-        super(Docente.class);
+    public PerfilDao() {
+        super(Perfil.class);
     }
     
-     public boolean findDuplicity(Docente teaching){
-     Query q = em.createNamedQuery("Docente.findDuplicity");
-     q.setParameter("nombre", teaching.getNombre());
-     q.setParameter("apellidoMaterno", teaching.getApellidoMaterno());
-     q.setParameter("apellidoPaterno", teaching.getApellidoPaterno());
+     public boolean findDuplicity(Perfil profile){
+     Query q = em.createNamedQuery("Perfil.findDuplicity");
+     q.setParameter("nombre", profile.getNombre());
+//     q.setParameter("apellidoMaterno", profile.getId());
+     
      return !q.getResultList().isEmpty();
  }  
 }
