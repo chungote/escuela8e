@@ -6,7 +6,6 @@ package mx.its.dsw2.Dao;
 
 import java.util.List;
 import javax.ejb.Local;
-import mx.its.dsw2.Modelo.Docente;
 import mx.its.dsw2.Modelo.HistorialMedico;
 
 /**
@@ -29,6 +28,7 @@ public interface HistorialMedicoDaoLocal {
     List<HistorialMedico> findRange(int[] range);
 
     int count();
-     boolean findDuplicity(HistorialMedico medicalhistory);
+    
+     boolean findDuplicity(HistorialMedico medicalHistory);
     
 }

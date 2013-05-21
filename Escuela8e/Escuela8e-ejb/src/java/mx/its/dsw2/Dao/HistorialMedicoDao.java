@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import mx.its.dsw2.Modelo.Docente;
 import mx.its.dsw2.Modelo.HistorialMedico;
 
 /**
@@ -28,12 +27,14 @@ public class HistorialMedicoDao extends AbstractDao<HistorialMedico> implements 
     public HistorialMedicoDao() {
         super(HistorialMedico.class);
     }
-    public boolean findDuplicity(HistorialMedico medicalhistory){
-        Query q = em.createNamedQuery("HistorialMedico.findDuplicity");
-        q.setParameter("nombre", medicalhistory.getNombre());
-        q.setParameter("apellidoMaterno", medicalhistory.getApellidoMaterno());
-        q.setParameter("apellidoPaterno", medicalhistory.getApellidoPaterno());
-        return !q.getResultList().isEmpty();
-    }
+    
+    @Override
+    public boolean findDuplicity(HistorialMedico medicalHistory){
+     Query q = em.createNamedQuery("HistorialMedico.findById");
+     q.setParameter("id", medicalHistory.getId());
+//     q.setParameter("apellidoMaterno", medicalhistory.getApellidoMaterno());
+//     q.setParameter("apellidoPaterno", medicalhistory.getApellidoPaterno());
+     return !q.getResultList().isEmpty();
+ }  
     
 }

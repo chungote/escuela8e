@@ -27,6 +27,8 @@ public interface AlumnoDaoLocal {
 
     List<Alumno> findRange(int[] range);
 
+    int count();
+    
     boolean findDuplicity(Alumno student);
     
 }
