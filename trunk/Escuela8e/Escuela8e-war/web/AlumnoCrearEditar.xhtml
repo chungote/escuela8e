@@ -55,10 +55,9 @@
                             <p:outputLabel value="CodigoPostal:" for="codigoPostal" />
                             <p:inputMask id="codigoPostal" value="#{studentBean.student.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required."/>
                             
-                            <p:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
-                            <p:calendar id="fechaNacimiento" value="#{studentBean.student.fechaNacimiento}" title="FechaNacimiento">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </p:calendar>    
+                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <p:calendar value="#{studentBean.student.fechaNacimiento}" mode="popup" navigator="true" showOn="button"/>
+                                   
                             <h:outputLabel value="IdPerfil:" for="idPerfil" />
                             <h:selectOneMenu id="idPerfil" value="#{studentBean.perfilSeleccionado}" title="IdPerfil" required="true" requiredMessage="The IdPerfil field is required.">
                                <!-- TODO: update below reference to list of available items-->
