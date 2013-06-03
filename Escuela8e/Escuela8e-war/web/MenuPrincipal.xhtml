@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -18,10 +19,12 @@
 
             <ui:define name="content">
                 <h:form>
-                <h:commandButton value="Modulo de Alumno" action="AlumnoLista"/>
-                <h:commandButton value="Modulo Docente" action="DocenteLista"/>
-                <h:commandButton value="Modulo Historial Medico" action="HistorialMedicLista"/>
-                <h:commandButton value="Modulo Perfil" action="PerfilLista"/>
+                    <center>
+                    <p:commandButton value="Modulo de Alumno" action="AlumnoLista" ajax="false"/>
+                    <p:commandButton value="Modulo Docente" action="DocenteLista" ajax="false"/>
+                    <p:commandButton value="Modulo Historial Medico" action="HistorialMedicLista" ajax="false"/>
+                    <p:commandButton value="Modulo Perfil" action="PerfilLista" ajax="false"/>
+                    </center>
                 </h:form>
             </ui:define>
 

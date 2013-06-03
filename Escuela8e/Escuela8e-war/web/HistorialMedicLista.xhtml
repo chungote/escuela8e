@@ -3,14 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
         <ui:composition template="./TemplatePrincipal.xhtml">
 
             <ui:define name="top">
-                top
+                    <h:form>
+                        <center>
+                    <p:commandButton value="Modulo de Alumno" action="AlumnoLista" ajax="false"/>
+                    <p:commandButton value="Modulo Docente" action="DocenteLista" ajax="false"/>
+                    <p:commandButton value="Modulo Historial Medico" action="HistorialMedicLista" ajax="false"/>
+                    <p:commandButton value="Modulo Perfil" action="PerfilLista" ajax="false"/>
+                    </center>
+                    </h:form>
             </ui:define>
 
             <ui:define name="left">
@@ -20,88 +28,97 @@
             <ui:define name="content">
                 <h1> Lista de Historiales</h1><br/>
                 <f:view>
+                   
                     <h:form>
-                        <h1><h:outputText value="Lista"/></h1>
                         <br/>
-                        <h:commandButton action="HistorialMedicCrearEditar" value="Registar Historial" actionListener="#{medicalHistoryBean.prepararNuevo}"/>
+                        <p:commandButton action="HistorialMedicCrearEditar" value="Registar Historial" actionListener="#{medicalHistoryBean.prepararNuevo}" ajax="false"/>
                         <br/>
-                        <h:dataTable value="#{medicalHistoryBean.lista}" var="item">
-                            <h:column>
+
+                        <p:dataTable value="#{medicalHistoryBean.lista}" var="item">
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Id"/>
+                                    <p:outputLabel value="Id"/>
                                 </f:facet>
-                                <h:outputText value="#{item.id}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.id}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Fecha"/>
+                                    <p:outputLabel value="Fecha"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fecha}">
+                                <p:outputLabel value="#{item.fecha}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
+                                </p:outputLabel>
+                            </p:column>
+                            <p:column filterBy="#{item.nombre}">
                                 <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
+                                    <p:outputLabel value="Nombre"/>
                                 </f:facet>
-                                <h:outputText value="#{item.nombre}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.nombre}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="ApellidoPaterno"/>
+                                    <p:outputLabel value="ApellidoPaterno"/>
                                 </f:facet>
-                                <h:outputText value="#{item.apellidoPaterno}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.apellidoPaterno}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="ApellidoMaterno"/>
+                                    <p:outputLabel value="ApellidoMaterno"/>
                                 </f:facet>
-                                <h:outputText value="#{item.apellidoMaterno}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.apellidoMaterno}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Edad"/>
+                                    <p:outputLabel value="Edad"/>
                                 </f:facet>
-                                <h:outputText value="#{item.edad}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.edad}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Sexo"/>
+                                    <p:outputLabel value="Sexo"/>
                                 </f:facet>
-                                <h:outputText value="#{item.sexo}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.sexo}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="FechaNacimiento"/>
+                                    <p:outputLabel value="FechaNacimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fechaNacimiento}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.fechaNacimiento}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Enfermedades"/>
+                                    <p:outputLabel value="Enfermedades"/>
                                 </f:facet>
-                                <h:outputText value="#{item.enfermedades}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.enfermedades}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="NoVacunas"/>
+                                    <p:outputLabel value="NoVacunas"/>
                                 </f:facet>
-                                <h:outputText value="#{item.noVacunas}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.noVacunas}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <p:outputLabel value="NomVacunas"/>
                                 </f:facet>
-                                <h:commandButton value="Editar" action="HistorialMedicCrearEditar" actionListener="#{medicalHistoryBean.prepararEditar}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.nomVacunas}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Eliminar"/>
+                                    <p:outputLabel value="Editar"/>
                                 </f:facet>
-                                <h:commandButton value="Eliminar" action="HistorialMedicConfirmar" actionListener="#{medicalHistoryBean.prepararEliminar}"/>
-                            </h:column>
-                        </h:dataTable>
+                                <p:commandButton value="Editar" action="HistorialMedicCrearEditar" actionListener="#{medicalHistoryBean.prepararEditar}" ajax="false"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <p:outputLabel value="Eliminar"/>
+                                </f:facet>
+                                <p:commandButton value="Eliminar" action="HistorialMedicConfirmar" actionListener="#{medicalHistoryBean.prepararEliminar}" ajax="false"/>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
+              
+
                 </f:view>
 
             </ui:define>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -20,36 +21,55 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="Crear/Editar"/></h1>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="NoControl:" for="noControl" />
-                            <h:inputText id="noControl" value="#{teachingBean.teaching.noControl}" title="NoControl" required="true" requiredMessage="The NoControl field is required."/>
-                            <h:outputLabel value="Nombre:" for="nombre" />
-                            <h:inputText id="nombre" value="#{teachingBean.teaching.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
-                            <h:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
-                            <h:inputText id="apellidoPaterno" value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required."/>
-                            <h:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
-                            <h:inputText id="apellidoMaterno" value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno" />
-                            <h:outputLabel value="Telefono:" for="telefono" />
-                            <h:inputText id="telefono" value="#{teachingBean.teaching.telefono}" title="Telefono" />
-                            <h:outputLabel value="Direccion:" for="direccion" />
-                            <h:inputText id="direccion" value="#{teachingBean.teaching.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                            <h:outputLabel value="Colonia:" for="colonia" />
-                            <h:inputText id="colonia" value="#{teachingBean.teaching.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required."/>
-                            <h:outputLabel value="CodigoPostal:" for="codigoPostal" />
-                            <h:inputText id="codigoPostal" value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required."/>
-                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
-                            <h:inputText id="fechaNacimiento" value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento" />
-                            <h:outputLabel value="IdPerfil:" for="idPerfil" />
-                            <h:selectOneMenu id="idPerfil" value="#{teachingBean.teaching.idPerfil}" title="IdPerfil" required="true" requiredMessage="The IdPerfil field is required.">
+                        <p:panel header="DocenteCraerEditar" footer="Pie de Panel">
+                        <p:growl life="13000"/>
+                                          
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NoControl:" for="noControl" />
+                            <p:inputMask id="noControl" value="#{teachingBean.teaching.noControl}" mask="99999999" title="NoControl" required="true" requiredMessage="The NoControl field is required." validatorMessage="El NoControl ser 100 y 10000">
+                                <f:validateLongRange minimum="100" maximum="10000"/> 
+                            </p:inputMask>
+                            <p:outputLabel value="Nombre:" for="nombre" />
+                            <p:inputText id="nombre" value="#{teachingBean.teaching.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
+                                    <f:validateLength minimum="3" maximum="45"/> 
+                            </p:inputText>
+                            <p:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
+                            <p:inputText id="apellidoPaterno" value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="El apellido Solo acepta letras minusculas">
+                                    <f:validateRegex pattern="[a-z]+"/>
+                            </p:inputText>
+                            <p:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
+                            <p:inputText id="apellidoMaterno" value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="El apellido Solo acepta letras minusculas">
+                                <f:validateRegex pattern="[a-z]+"/> 
+                            </p:inputText>
+                            <p:outputLabel value="Telefono:" for="telefono" />
+                            <p:inputMask id="telefono" value="#{teachingBean.teaching.telefono}" mask="(999) 999-9999" title="Telefono" validatorMessage="El telefono solo acepta numeros" />
+                            <p:outputLabel value="Direccion:" for="direccion" />
+                            <p:inputText id="direccion" value="#{teachingBean.teaching.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required." validatorMessage="La Direccion debe ser entre 3 y 45 letras">
+                                 <f:validateLength minimum="3" maximum="25"/> 
+                            </p:inputText>
+                            <p:outputLabel value="Colonia:" for="colonia" />
+                            <p:inputText id="colonia" value="#{teachingBean.teaching.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="La Colonia debe ser entre 3 y 45 letras">
+                                <f:validateLength minimum="3" maximum="25"/> 
+                            </p:inputText>
+                            <p:outputLabel value="CodigoPostal:" for="codigoPostal" />
+                            <p:inputMask id="codigoPostal" value="#{teachingBean.teaching.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required." validatorMessage="El codigo Postal solo acepta numeros"/>
+                            <p:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <p:calendar id="fechaNacimiento" value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento">
+                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                            </p:calendar>    
+                           <p:outputLabel value="IdPerfil:" for="idPerfil" />
+                           <h:selectOneMenu id="idPerfil" value="#{teachingBean.perfilSeleccionado}" title="IdPerfil" required="true" requiredMessage="The IdPerfil field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
+                                <f:selectItems value="#{teachingBean.listaPerfil}"  var="p" itemLabel="#{p.nombre}" itemValue="#{p.id}"/>
                             </h:selectOneMenu>
-                             <h:commandButton action="DocenteConfirmar" value="Aceptar"/>
-                            <h:commandButton action="DocenteLista" value="Cancelar"/>
-                        </h:panelGrid>
+                           <p:commandButton action="DocenteConfirmar" value="Aceptar" actionListener="#{teachingBean.agregarPerfil}" ajax="false"/>
+                            <p:commandButton action="DocenteLista" value="Cancelar" immediate="true" ajax="false"/>
+                        
+                            </p:panelGrid>
+                        </p:panel>
                     </h:form>
                 </f:view>
+
 
             </ui:define>
 
