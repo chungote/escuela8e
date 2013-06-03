@@ -53,10 +53,9 @@
                             </p:inputText>
                             <p:outputLabel value="CodigoPostal:" for="codigoPostal" />
                             <p:inputMask id="codigoPostal" value="#{teachingBean.teaching.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required." validatorMessage="El codigo Postal solo acepta numeros"/>
-                            <p:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
-                            <p:calendar id="fechaNacimiento" value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </p:calendar>    
+                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <p:calendar value="#{teachingBean.teaching.fechaNacimiento}" mode="popup" navigator="true" showOn="button"/>
+                                   
                            <p:outputLabel value="IdPerfil:" for="idPerfil" />
                            <h:selectOneMenu id="idPerfil" value="#{teachingBean.perfilSeleccionado}" title="IdPerfil" required="true" requiredMessage="The IdPerfil field is required.">
                                 <!-- TODO: update below reference to list of available items-->
