@@ -2,9 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+     
 
     <body>
+        
 
         <ui:composition template="./TemplatePrincipal.xhtml">
 
@@ -20,14 +23,14 @@
                 <h1> BIENVENIDOS AL SISTEMA ESCUELA</h1>
                <h:form>
                     <center>
-                    <h:panelGrid columns="2">
-                    <h:outputLabel value="Usuario:"/>
-                    <h:inputText value="#{accesBean.user}"/>
+                    <p:panelGrid columns="2">
+                    <p:outputLabel value="Usuario:"/>
+                    <p:inputText value="#{accesBean.user}"/>
                   
-                    <h:outputLabel value="Contraseña:"/>
-                    <h:inputSecret value="#{accesBean.password}"/>
-                    </h:panelGrid>
-                        <h:commandButton value="ACCEDER" action="#{accesBean.procesarAction}"/>
+                    <p:outputLabel value="Contraseña:"/>
+                    <p:password value="#{accesBean.password}"/>
+                    </p:panelGrid>
+                        <p:commandButton value="ACCEDER" action="#{accesBean.procesarAction}" ajax="false"/>
                         </center>
                 </h:form>
             </ui:define>

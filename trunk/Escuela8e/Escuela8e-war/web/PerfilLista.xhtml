@@ -3,14 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
         <ui:composition template="./TemplatePrincipal.xhtml">
 
             <ui:define name="top">
-                top
+                   <h:form>
+                       <center>
+                       <p:commandButton value="Modulo de Alumno" action="AlumnoLista" ajax="false"/>
+                    <p:commandButton value="Modulo Docente" action="DocenteLista" ajax="false"/>
+                    <p:commandButton value="Modulo Historial Medico" action="HistorialMedicLista" ajax="false"/>
+                    <p:commandButton value="Modulo Perfil" action="PerfilLista" ajax="false"/>
+                   </center>
+                   </h:form>
             </ui:define>
 
             <ui:define name="left">
@@ -23,34 +31,34 @@
                     <h:form>
                         <h1><h:outputText value="Lista"/></h1>
                         <br/>
-                        <h:commandButton action="PerfilCrearEditar" value="Registar Perfil" actionListener="#{profileBean.prepararNuevo}"/>
+                        <p:commandButton action="PerfilCrearEditar" value="Registar Perfil" actionListener="#{profileBean.prepararNuevo}" ajax="false"/>
                         <br/>
-                        <h:dataTable value="#{profileBean.lista}" var="item">
-                            <h:column>
+                        <p:dataTable value="#{profileBean.lista}" var="item">
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Id"/>
+                                    <p:outputLabel value="Id"/>
                                 </f:facet>
-                                <h:outputText value="#{item.id}"/>
-                            </h:column>
-                            <h:column>
+                                <p:outputLabel value="#{item.id}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
+                                    <p:outputLabel value="Nombre"/>
                                 </f:facet>
-                                <h:outputText value="#{item.nombre}"/>
-                            </h:column>
-                             <h:column>
+                                <p:outputLabel value="#{item.nombre}"/>
+                            </p:column>
+                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <p:outputLabel value="Editar"/>
                                 </f:facet>
-                                 <h:commandButton value="Editar" action="PerfilCrearEditar" actionListener="#{profileBean.prepararEditar}"/>
-                            </h:column>
-                            <h:column>
+                                 <p:commandButton value="Editar" action="PerfilCrearEditar" actionListener="#{profileBean.prepararEditar}" ajax="false"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Eliminar"/>
+                                    <p:outputLabel value="Eliminar"/>
                                 </f:facet>
-                                <h:commandButton value="Eliminar" action="PerfilConfirmar" actionListener="#{profileBean.prepararEliminar}"/>
-                            </h:column>
-                        </h:dataTable>
+                                <p:commandButton value="Eliminar" action="PerfilConfirmar" actionListener="#{profileBean.prepararEliminar}" ajax="false"/>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
                 </f:view>
 

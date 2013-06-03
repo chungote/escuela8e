@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -20,34 +21,37 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="View"/></h1>
-                        <h:panelGrid columns="2">
+                       
+                        <p:panelGrid columns="2">
                             
-                            <h:outputText value="Fecha:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
+                            <p:outputLabel value="Fecha:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                            <h:outputText value="Nombre:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre"/>
-                            <h:outputText value="ApellidoPaterno:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno"/>
-                            <h:outputText value="ApellidoMaterno:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno"/>
-                            <h:outputText value="Edad:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
-                            <h:outputText value="Sexo:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo"/>
-                            <h:outputText value="FechaNacimiento:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento"/>
-                            <h:outputText value="Enfermedades:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades"/>
-                            <h:outputText value="NoVacunas:"/>
-                            <h:outputText value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
-                            <h:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar"/>
-                            <h:commandButton action="HistorialMedicCrearEditar" value="Cancelar"/>
-                        </h:panelGrid>
+                            </p:outputLabel>
+                            <p:outputLabel value="Nombre:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre"/>
+                            <p:outputLabel value="ApellidoPaterno:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno"/>
+                            <p:outputLabel value="ApellidoMaterno:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <p:outputLabel value="Edad:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
+                            <p:outputLabel value="Sexo:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo"/>
+                            <p:outputLabel value="FechaNacimiento:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento"/>
+                            <p:outputLabel value="Enfermedades:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades"/>
+                            <p:outputLabel value="NoVacunas:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
+                            <p:outputLabel value="NomVacunas:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas"/>
+                            <p:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar" ajax="false"/>
+                            <p:commandButton action="HistorialMedicCrearEditar" value="Cancelar" ajax="false"/>
+                        </p:panelGrid>
                     </h:form>
                 </f:view>
+
 
 
 

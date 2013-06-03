@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -21,14 +22,14 @@
                 <f:view>
                     <h:form>
                         <h1><h:outputText value=""/></h1>
-                        <h:panelGrid columns="2">
+                        <p:panelGrid columns="2">
                             
-                            <h:outputText value="Nombre:"/>
-                            <h:outputText value="#{profileBean.profile.nombre}" title="Nombre"/>
-                            <h:commandButton action="#{profileBean.procesarAccion}" value="Aceptar"/>
-                            <h:commandButton action="PerfilCrearEditar" value="Cancelar"/>
+                            <p:outputLabel value="Nombre:"/>
+                            <p:outputLabel value="#{profileBean.profile.nombre}" title="Nombre"/>
+                            <p:commandButton action="#{profileBean.procesarAccion}" value="Aceptar" ajax="false"/>
+                            <p:commandButton action="PerfilCrearEditar" value="Cancelar" ajax="false"/>
                        
-                        </h:panelGrid>
+                        </p:panelGrid>
                     </h:form>
                 </f:view>
 

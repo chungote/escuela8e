@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -20,14 +21,19 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="Crear/Editar"/></h1>
-                        <h:panelGrid columns="2">
+                        <p:panel header="PerfilCraerEditar" footer="Pie de Panel">
+                        <p:growl life="12000"/>
+                        
+                        <p:panelGrid columns="2">
                             
-                            <h:outputLabel value="Nombre:" for="nombre" />
-                            <h:inputText id="nombre" value="#{profileBean.profile.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
-                            <h:commandButton action="PerfilConfirmar" value="Aceptar"/>
-                            <h:commandButton action="PerfilLista" value="Cancelar" immediate="true"/> 
-                        </h:panelGrid>
+                            <p:outputLabel value="Nombre:" for="nombre" />
+                            <p:inputText id="nombre" value="#{profileBean.profile.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
+                                <f:validateLength minimum="3" maximum="45"/> 
+                            </p:inputText>
+                            <p:commandButton action="PerfilConfirmar" value="Aceptar" ajax="false"/>
+                            <p:commandButton action="PerfilLista" value="Cancelar" immediate="true" ajax="false"/> 
+                        </p:panelGrid>
+                        </p:panel>
                     </h:form>
                 </f:view>
 
