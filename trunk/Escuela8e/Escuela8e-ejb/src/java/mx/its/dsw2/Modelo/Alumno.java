@@ -5,6 +5,7 @@
 package mx.its.dsw2.Modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -39,7 +42,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Alumno.findByColonia", query = "SELECT a FROM Alumno a WHERE a.colonia = :colonia"),
     @NamedQuery(name = "Alumno.findByCodigoPostal", query = "SELECT a FROM Alumno a WHERE a.codigoPostal = :codigoPostal"),
     @NamedQuery(name = "Alumno.findByFechaNacimiento", query = "SELECT a FROM Alumno a WHERE a.fechaNacimiento = :fechaNacimiento"),
-     @NamedQuery(name = "Alumno.findDuplicity", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre AND a.apellidoMaterno = :apellidoMaterno AND a.apellidoPaterno = :apellidoPaterno")})
+    @NamedQuery(name = "Alumno.findDuplicity", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre AND a.apellidoMaterno = :apellidoMaterno AND a.apellidoPaterno = :apellidoPaterno")})
+
 public class Alumno implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -83,9 +87,9 @@ public class Alumno implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "codigoPostal")
     private String codigoPostal;
-    @Size(max = 30)
     @Column(name = "fechaNacimiento")
-    private String fechaNacimiento;
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @JoinColumn(name = "idPerfil", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Perfil idPerfil;
@@ -179,11 +183,11 @@ public class Alumno implements Serializable {
         this.codigoPostal = codigoPostal;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
