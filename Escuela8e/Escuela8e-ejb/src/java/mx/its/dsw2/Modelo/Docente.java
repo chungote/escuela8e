@@ -5,6 +5,7 @@
 package mx.its.dsw2.Modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,6 +43,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Docente.findByCodigoPostal", query = "SELECT d FROM Docente d WHERE d.codigoPostal = :codigoPostal"),
     @NamedQuery(name = "Docente.findByFechaNacimiento", query = "SELECT d FROM Docente d WHERE d.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Docente.findDuplicity", query = "SELECT d FROM Docente d WHERE d.nombre = :nombre AND d.apellidoMaterno = :apellidoMaterno AND d.apellidoPaterno = :apellidoPaterno")})
+
 public class Docente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -83,9 +87,9 @@ public class Docente implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "codigoPostal")
     private String codigoPostal;
-    @Size(max = 30)
     @Column(name = "fechaNacimiento")
-    private String fechaNacimiento;
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @JoinColumn(name = "idPerfil", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Perfil idPerfil;
@@ -179,11 +183,11 @@ public class Docente implements Serializable {
         this.codigoPostal = codigoPostal;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

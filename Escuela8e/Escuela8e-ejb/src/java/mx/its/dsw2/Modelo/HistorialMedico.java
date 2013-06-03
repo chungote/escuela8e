@@ -40,7 +40,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HistorialMedico.findByFechaNacimiento", query = "SELECT h FROM HistorialMedico h WHERE h.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "HistorialMedico.findByEnfermedades", query = "SELECT h FROM HistorialMedico h WHERE h.enfermedades = :enfermedades"),
     @NamedQuery(name = "HistorialMedico.findByNoVacunas", query = "SELECT h FROM HistorialMedico h WHERE h.noVacunas = :noVacunas"),
-    @NamedQuery(name = "HistorialMedico.findDuplicity", query = "SELECT h FROM HistorialMedico h WHERE h.id = :nombre AND h.apellidoMaterno = :apellidoMaterno AND h.apellidoPaterno = :apellidoPaterno")})
+    @NamedQuery(name = "HistorialMedico.findByNomVacunas", query = "SELECT h FROM HistorialMedico h WHERE h.nomVacunas = :nomVacunas"),
+    @NamedQuery(name = "HistorialMedico.findDuplicity", query = "SELECT h FROM HistorialMedico h WHERE h.id = :id")})
+ 
 public class HistorialMedico implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -77,9 +79,9 @@ public class HistorialMedico implements Serializable {
     private String sexo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
     @Column(name = "fechaNacimiento")
-    private String fechaNacimiento;
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -90,6 +92,11 @@ public class HistorialMedico implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "noVacunas")
     private String noVacunas;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "nomVacunas")
+    private String nomVacunas;
 
     public HistorialMedico() {
     }
@@ -98,7 +105,7 @@ public class HistorialMedico implements Serializable {
         this.id = id;
     }
 
-    public HistorialMedico(Integer id, Date fecha, String nombre, String apellidoPaterno, int edad, String sexo, String fechaNacimiento, String enfermedades, String noVacunas) {
+    public HistorialMedico(Integer id, Date fecha, String nombre, String apellidoPaterno, int edad, String sexo, Date fechaNacimiento, String enfermedades, String noVacunas, String nomVacunas) {
         this.id = id;
         this.fecha = fecha;
         this.nombre = nombre;
@@ -108,6 +115,7 @@ public class HistorialMedico implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.enfermedades = enfermedades;
         this.noVacunas = noVacunas;
+        this.nomVacunas = nomVacunas;
     }
 
     public Integer getId() {
@@ -166,11 +174,11 @@ public class HistorialMedico implements Serializable {
         this.sexo = sexo;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -188,6 +196,14 @@ public class HistorialMedico implements Serializable {
 
     public void setNoVacunas(String noVacunas) {
         this.noVacunas = noVacunas;
+    }
+
+    public String getNomVacunas() {
+        return nomVacunas;
+    }
+
+    public void setNomVacunas(String nomVacunas) {
+        this.nomVacunas = nomVacunas;
     }
 
     @Override

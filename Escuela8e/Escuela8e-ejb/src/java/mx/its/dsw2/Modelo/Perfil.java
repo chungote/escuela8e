@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Perfil.findById", query = "SELECT p FROM Perfil p WHERE p.id = :id"),
     @NamedQuery(name = "Perfil.findByNombre", query = "SELECT p FROM Perfil p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Perfil.findDuplicity", query = "SELECT p FROM Perfil p WHERE p.nombre = :nombre")})
+
 public class Perfil implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -119,7 +120,7 @@ public class Perfil implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.its.dsw2.Modelo.Perfil[ id=" + id + " ]";
+        return nombre;
     }
     
 }
