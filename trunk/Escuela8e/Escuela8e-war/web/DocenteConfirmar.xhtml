@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -20,34 +21,41 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value=""/></h1>
+                         <p:panel header="DocenteConfirmar" footer="Pie de Panel">
+                         <p:growl life="13000"/>
+                        
                         <h:panelGrid columns="2">
-                            
-                            <h:outputText value="NoControl:"/>
-                            <h:outputText value="#{teachingBean.teaching.noControl}" title="NoControl"/>
-                            <h:outputText value="Nombre:"/>
-                            <h:outputText value="#{teachingBean.teaching.nombre}" title="Nombre"/>
-                            <h:outputText value="ApellidoPaterno:"/>
-                            <h:outputText value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno"/>
-                            <h:outputText value="ApellidoMaterno:"/>
-                            <h:outputText value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno"/>
-                            <h:outputText value="Telefono:"/>
-                            <h:outputText value="#{teachingBean.teaching.telefono}" title="Telefono"/>
-                            <h:outputText value="Direccion:"/>
-                            <h:outputText value="#{teachingBean.teaching.direccion}" title="Direccion"/>
-                            <h:outputText value="Colonia:"/>
-                            <h:outputText value="#{teachingBean.teaching.colonia}" title="Colonia"/>
-                            <h:outputText value="CodigoPostal:"/>
-                            <h:outputText value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal"/>
-                            <h:outputText value="FechaNacimiento:"/>
-                            <h:outputText value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento"/>
-                            <h:outputText value="IdPerfil:"/>
-                            <h:outputText value="#{teachingBean.teaching.idPerfil}" title="IdPerfil"/>
-                            <h:commandButton action="#{teachingBean.procesarAccion}" value="Aceptar"/>
-                            <h:commandButton action="DocenteCrearEditar" value="Cancelar"/>
+                            <p:outputLabel value="NoControl:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.noControl}" title="NoControl"/>
+                            <p:outputLabel value="Nombre:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.nombre}" title="Nombre"/>
+                            <p:outputLabel value="ApellidoPaterno:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno"/>
+                            <p:outputLabel value="ApellidoMaterno:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <p:outputLabel value="Telefono:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.telefono}" title="Telefono"/>
+                            <p:outputLabel value="Direccion:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.direccion}" title="Direccion"/>
+                            <p:outputLabel value="Colonia:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.colonia}" title="Colonia"/>
+                            <p:outputLabel value="CodigoPostal:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal"/>
+                            <p:outputLabel value="FechaNacimiento:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:outputLabel>>
+                            <p:outputLabel value="IdPerfil:"/>
+                            <p:outputLabel value="#{teachingBean.teaching.idPerfil}" title="IdPerfil"/>
+                            <p:commandButton action="#{teachingBean.procesarAccion}" value="Aceptar" ajax="false"/>
+                            <p:commandButton action="DocenteCrearEditar" value="Cancelar" ajax="false"/>
                         </h:panelGrid>
+                         </p:panel>
                     </h:form>
                 </f:view>
+
+                        
+                       
 
             </ui:define>
 
