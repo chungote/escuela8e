@@ -30,8 +30,8 @@
                             <p:inputText id="nombre" value="#{profileBean.profile.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
                                 <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText>
-                            <p:commandButton action="PerfilConfirmar" value="Aceptar" ajax="false"/>
-                            <p:commandButton action="PerfilLista" value="Cancelar" immediate="true" ajax="false"/> 
+                            <p:commandButton action="PerfilConfirmar" value="Aceptar" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="PerfilLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false"/> 
                         </p:panelGrid>
                         </p:panel>
                     </h:form>
