@@ -34,11 +34,11 @@
                             <p:inputText id="nombre" value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
                                 <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText>
-                            <p:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
+                            <p:outputLabel value="Apellido Paterno:" for="apellidoPaterno" />
                             <p:inputText id="apellidoPaterno" value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="El apellido Solo acepta letras minusculas">
                                 <f:validateRegex pattern="[a-z]+"/> 
                             </p:inputText>
-                            <p:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
+                            <p:outputLabel value="Apellido Materno:" for="apellidoMaterno" />
                             <p:inputText id="apellidoMaterno" value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="El apellido Solo acepta letras minusculas">
                                 <f:validateRegex pattern="[a-z]+"/> 
                             </p:inputText>
@@ -52,16 +52,16 @@
                             <f:selectItem itemLabel="Mujer" itemValue="1" />  
                             </p:selectOneMenu> 
                             
-                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <h:outputLabel value="Fecha de Nacimiento:" for="fechaNacimiento" />
                             <p:calendar value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" mode="popup" navigator="tru" showOn="button"/>
                                 
                            
-                            <p:outputLabel value="Enfermedades:" for="enfermedades" />
+                            <p:outputLabel value="Nombre de Enfermedades:" for="enfermedades" />
                             <p:inputText id="enfermedades" value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades" required="true" requiredMessage="The Enfermedades field is required." validatorMessage="El nombre de la Enfermedad debe ser entre 3 y 45 letras">
                                 <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText>
                             
-                            <p:outputLabel value="NoVacunas:" for="noVacunas" />
+                            <p:outputLabel value="Numero de Vacunas:" for="noVacunas" />
                             <p:selectOneMenu id="noVacunas" value="#{medicalHistoryBean.medicalHistory.noVacunas}" effect="fold" editable="true" title="NoVacunas" required="true" requiredMessage="The NoVacunas field is required.">
                                 <f:selectItem itemLabel="1" itemValue="" />  
                                 <f:selectItem itemLabel="2" itemValue="1" />
@@ -75,12 +75,12 @@
                                 <f:selectItem itemLabel="10" itemValue="9" /> 
                                 <f:selectItem itemLabel="11" itemValue="10" />  
                            </p:selectOneMenu> 
-                            <p:outputLabel value="NomVacunas:" for="nomVacunas" />
+                            <p:outputLabel value="Nombre de Vacunas:" for="nomVacunas" />
                             <p:inputText id="nomVacunas" value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas" required="true" requiredMessage="The NomVacunas field is required." validatorMessage="El nombre de las Vacunas debe ser entre 3 y 45 letras">
                                 <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText>
-                            <p:commandButton action="HistorialMedicConfirmar" value="Aceptar" ajax="false"/>
-                            <p:commandButton action="HistorialMedicLista" value="Cancelar" immediate="true" ajax="false"/> 
+                            <p:commandButton action="HistorialMedicConfirmar" value="Aceptar" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="HistorialMedicLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false"/> 
                        
              
                             </p:panelGrid>

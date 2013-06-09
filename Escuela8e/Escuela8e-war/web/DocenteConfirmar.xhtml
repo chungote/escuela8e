@@ -25,13 +25,13 @@
                          <p:growl life="13000"/>
                         
                         <h:panelGrid columns="2">
-                            <p:outputLabel value="NoControl:"/>
+                            <p:outputLabel value="No. Control:"/>
                             <p:outputLabel value="#{teachingBean.teaching.noControl}" title="NoControl"/>
                             <p:outputLabel value="Nombre:"/>
                             <p:outputLabel value="#{teachingBean.teaching.nombre}" title="Nombre"/>
-                            <p:outputLabel value="ApellidoPaterno:"/>
+                            <p:outputLabel value="Apellido Paterno:"/>
                             <p:outputLabel value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno"/>
-                            <p:outputLabel value="ApellidoMaterno:"/>
+                            <p:outputLabel value="Apellido Materno:"/>
                             <p:outputLabel value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno"/>
                             <p:outputLabel value="Telefono:"/>
                             <p:outputLabel value="#{teachingBean.teaching.telefono}" title="Telefono"/>
@@ -39,13 +39,13 @@
                             <p:outputLabel value="#{teachingBean.teaching.direccion}" title="Direccion"/>
                             <p:outputLabel value="Colonia:"/>
                             <p:outputLabel value="#{teachingBean.teaching.colonia}" title="Colonia"/>
-                            <p:outputLabel value="CodigoPostal:"/>
+                            <p:outputLabel value="Codigo Postal:"/>
                             <p:outputLabel value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal"/>
-                            <p:outputLabel value="FechaNacimiento:"/>
+                            <p:outputLabel value="Fecha de Nacimiento:"/>
                             <p:outputLabel value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </p:outputLabel>
-                            <p:outputLabel value="IdPerfil:"/>
+                            <p:outputLabel value="Id Perfil:"/>
                             <p:outputLabel value="#{teachingBean.teaching.idPerfil}" title="IdPerfil"/>
                             <p:commandButton action="#{teachingBean.procesarAccion}" value="Aceptar" ajax="false"/>
                             <p:commandButton action="DocenteCrearEditar" value="Cancelar" ajax="false"/>

@@ -25,7 +25,7 @@
                         <p:growl life="13000"/>
                                           
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="NoControl:" for="noControl" />
+                            <p:outputLabel value="No.Control:" for="noControl" />
                             <p:inputMask id="noControl" value="#{teachingBean.teaching.noControl}" mask="99999999" title="NoControl" required="true" requiredMessage="The NoControl field is required." validatorMessage="El NoControl ser 100 y 10000">
                                 <f:validateLongRange minimum="100" maximum="10000"/> 
                             </p:inputMask>
@@ -33,11 +33,11 @@
                             <p:inputText id="nombre" value="#{teachingBean.teaching.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
                                     <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText>
-                            <p:outputLabel value="ApellidoPaterno:" for="apellidoPaterno" />
+                            <p:outputLabel value="Apellido Paterno:" for="apellidoPaterno" />
                             <p:inputText id="apellidoPaterno" value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="El apellido Solo acepta letras minusculas">
                                     <f:validateRegex pattern="[a-z]+"/>
                             </p:inputText>
-                            <p:outputLabel value="ApellidoMaterno:" for="apellidoMaterno" />
+                            <p:outputLabel value="Apellido Materno:" for="apellidoMaterno" />
                             <p:inputText id="apellidoMaterno" value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="El apellido Solo acepta letras minusculas">
                                 <f:validateRegex pattern="[a-z]+"/> 
                             </p:inputText>
@@ -51,18 +51,18 @@
                             <p:inputText id="colonia" value="#{teachingBean.teaching.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="La Colonia debe ser entre 3 y 45 letras">
                                 <f:validateLength minimum="3" maximum="25"/> 
                             </p:inputText>
-                            <p:outputLabel value="CodigoPostal:" for="codigoPostal" />
+                            <p:outputLabel value="Codigo Postal:" for="codigoPostal" />
                             <p:inputMask id="codigoPostal" value="#{teachingBean.teaching.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required." validatorMessage="El codigo Postal solo acepta numeros"/>
                             <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
                             <p:calendar value="#{teachingBean.teaching.fechaNacimiento}" mode="popup" navigator="true" showOn="button"/>
                                    
-                           <p:outputLabel value="IdPerfil:" for="idPerfil" />
+                           <p:outputLabel value="Id Perfil:" for="idPerfil" />
                            <h:selectOneMenu id="idPerfil" value="#{teachingBean.perfilSeleccionado}" title="IdPerfil" required="true" requiredMessage="The IdPerfil field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{teachingBean.listaPerfil}"  var="p" itemLabel="#{p.nombre}" itemValue="#{p.id}"/>
                             </h:selectOneMenu>
-                           <p:commandButton action="DocenteConfirmar" value="Aceptar" actionListener="#{teachingBean.agregarPerfil}" ajax="false"/>
-                            <p:commandButton action="DocenteLista" value="Cancelar" immediate="true" ajax="false"/>
+                           <p:commandButton action="DocenteConfirmar" value="Aceptar" actionListener="#{teachingBean.agregarPerfil}" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="DocenteLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false"/>
                         
                             </p:panelGrid>
                         </p:panel>

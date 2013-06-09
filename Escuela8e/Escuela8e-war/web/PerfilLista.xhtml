@@ -29,11 +29,11 @@
                  <h1> Lista de Perfiles</h1><br/>
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="Lista"/></h1>
+                        
                         <br/>
-                        <p:commandButton action="PerfilCrearEditar" value="Registar Perfil" actionListener="#{profileBean.prepararNuevo}" ajax="false"/>
+                        <p:commandButton action="PerfilCrearEditar" value="Registar Perfil" actionListener="#{profileBean.prepararNuevo}" icon="ui-icon-note" ajax="false"/>
                         <br/>
-                        <p:dataTable value="#{profileBean.lista}" var="item">
+                        <p:dataTable value="#{profileBean.lista}" var="item" paginator="true" rows="2">
                             <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Id"/>
@@ -50,13 +50,13 @@
                                 <f:facet name="header">
                                     <p:outputLabel value="Editar"/>
                                 </f:facet>
-                                 <p:commandButton value="Editar" action="PerfilCrearEditar" actionListener="#{profileBean.prepararEditar}" ajax="false"/>
+                                 <p:commandButton value="Editar" action="PerfilCrearEditar" actionListener="#{profileBean.prepararEditar}" icon="ui-icon-tag" ajax="false"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Eliminar"/>
                                 </f:facet>
-                                <p:commandButton value="Eliminar" action="PerfilConfirmar" actionListener="#{profileBean.prepararEliminar}" ajax="false"/>
+                                <p:commandButton value="Eliminar" action="PerfilConfirmar" actionListener="#{profileBean.prepararEliminar}" icon="ui-icon-trash" ajax="false"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
