@@ -9,8 +9,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+import mx.its.dsw2.Dao.PerfilDaoLocal;
 import mx.its.dsw2.Modelo.Alumno;
+import mx.its.dsw2.Modelo.Perfil;
 import mx.its.dsw2.bl.AlumnoBlLocal;
+import mx.its.dsw2.bl.PerfilBlLocal;
 
 /**
  *
@@ -19,10 +22,17 @@ import mx.its.dsw2.bl.AlumnoBlLocal;
 @ManagedBean
 @SessionScoped
 public class StudentBean {
+    @EJB
+    private PerfilDaoLocal perfilDao;
+    @EJB
+    private PerfilBlLocal perfilBl;
+   
 
     @EJB
     private AlumnoBlLocal alumnoBl;
+    
     private List<Alumno> lista;
+    private List<Perfil> listaPerfil;
     private Alumno student;
     private String accion;
     private int perfilSeleccionado;
@@ -55,6 +65,17 @@ public class StudentBean {
     public void setPerfilSeleccionado(int perfilSeleccionado) {
         this.perfilSeleccionado = perfilSeleccionado;
     }
+
+    public List<Perfil> getListaPerfil() {
+        listaPerfil = perfilBl.getAll();
+        return listaPerfil;
+    }
+
+    public void setListaPerfil(List<Perfil> listaPerfil) {
+        this.listaPerfil = listaPerfil;
+    }
+    
+   
     
 
     //-----------------ACCIONES---------------
@@ -75,20 +96,13 @@ public class StudentBean {
             }
         }
         accion = "";
-        return "HistorialMedicLista";
+        return "UsuarioLista";
 
     }
-//    public String procesarSeleccion(){
-//        student.(alumnoBl.findById(perfilSeleccionado));
-//        //List<Categoriade> cat=new ArrayList<Categoria>();
-//       
-//          //  cat.add(categoriaBl.find(categorySeleccionado));
-//        
-//        
-//        //book.setCategoriaDeLibroList();
-//        return "AlumnoConfirmar";
-//    }
-////}
+    public void agregarPerfil(ActionEvent evet){
+        student.setIdPerfil(perfilDao.find(perfilSeleccionado));
+    }
+
 
 //------------LISTENERS------------------
     public void prepararNuevo(ActionEvent evt) {

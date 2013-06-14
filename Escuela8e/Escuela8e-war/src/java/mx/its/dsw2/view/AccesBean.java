@@ -6,6 +6,7 @@ package mx.its.dsw2.view;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -42,6 +43,8 @@ public class AccesBean {
     //------------Actions--------
     public String procesarAction(){
         if(user.equals("root")&&password.equals("123")){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("USUARIO_LOGUEADO", user);
         return "MenuPrincipal";
     }else{
             return "pagina2";

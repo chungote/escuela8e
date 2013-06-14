@@ -9,8 +9,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+import mx.its.dsw2.Dao.PerfilDaoLocal;
 import mx.its.dsw2.Modelo.Docente;
+import mx.its.dsw2.Modelo.Perfil;
 import mx.its.dsw2.bl.DocenteBlLocal;
+import mx.its.dsw2.bl.PerfilBlLocal;
 
 /**
  *
@@ -19,12 +22,20 @@ import mx.its.dsw2.bl.DocenteBlLocal;
 @ManagedBean
 @SessionScoped
 public class TeachingBean {
+    @EJB
+    private PerfilDaoLocal perfilDao;
+    @EJB
+    private PerfilBlLocal perfilBl;
 
     @EJB
     private DocenteBlLocal docenteBl;
+    
+    
     private List<Docente> lista;
+    private List<Perfil> listaPerfil;
     private Docente teaching;
     private String accion;
+    private int perfilSeleccionado;
 
     /**
      * Creates a new instance of TeachingBean
@@ -41,6 +52,24 @@ public class TeachingBean {
     public Docente getTeaching() {
         return teaching;
     }
+
+    public List<Perfil> getListaPerfil() {
+        listaPerfil = perfilBl.getAll();
+        return listaPerfil;
+    }
+
+    public void setListaPerfil(List<Perfil> listaPerfil) {
+        this.listaPerfil = listaPerfil;
+    }
+
+    public int getPerfilSeleccionado() {
+        return perfilSeleccionado;
+    }
+
+    public void setPerfilSeleccionado(int perfilSeleccionado) {
+        this.perfilSeleccionado = perfilSeleccionado;
+    }
+    
 
     //-----------------ACCIONES---------------
 //public String prepararNuevo(){
@@ -60,8 +89,11 @@ public class TeachingBean {
             }
         }
         accion = "";
-        return "HistorialMedicLista";
+        return "DocenteLista";
 
+    }
+    public void agregarPerfil(ActionEvent evet){
+        teaching.setIdPerfil(perfilDao.find(perfilSeleccionado));
     }
 //}
 
