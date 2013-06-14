@@ -21,7 +21,7 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <p:panel header="HistorialMedicCraerEditar" footer="Pie de Panel">
+                        <p:panel header="Historial Medico" footer="Pie de Panel">
                         <p:growl life="13000"/>
                         
                         
@@ -36,11 +36,11 @@
                             </p:inputText>
                             <p:outputLabel value="Apellido Paterno:" for="apellidoPaterno" />
                             <p:inputText id="apellidoPaterno" value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="El apellido Solo acepta letras minusculas">
-                                <f:validateRegex pattern="[a-z]+"/> 
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             <p:outputLabel value="Apellido Materno:" for="apellidoMaterno" />
                             <p:inputText id="apellidoMaterno" value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="El apellido Solo acepta letras minusculas">
-                                <f:validateRegex pattern="[a-z]+"/> 
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             <p:outputLabel value="Edad:" for="edad" />
                             <p:inputText id="edad" value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad" required="true" requiredMessage="The Edad field is required." validatorMessage="La Edad debe ser entre 1 y 100">
@@ -57,8 +57,8 @@
                                 
                            
                             <p:outputLabel value="Nombre de Enfermedades:" for="enfermedades" />
-                            <p:inputText id="enfermedades" value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades" required="true" requiredMessage="The Enfermedades field is required." validatorMessage="El nombre de la Enfermedad debe ser entre 3 y 45 letras">
-                                <f:validateLength minimum="3" maximum="45"/> 
+                            <p:inputText id="enfermedades" value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades" required="true" requiredMessage="The Enfermedades field is required." validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             
                             <p:outputLabel value="Numero de Vacunas:" for="noVacunas" />
@@ -77,7 +77,7 @@
                            </p:selectOneMenu> 
                             <p:outputLabel value="Nombre de Vacunas:" for="nomVacunas" />
                             <p:inputText id="nomVacunas" value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas" required="true" requiredMessage="The NomVacunas field is required." validatorMessage="El nombre de las Vacunas debe ser entre 3 y 45 letras">
-                                <f:validateLength minimum="3" maximum="45"/> 
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             <p:commandButton action="HistorialMedicConfirmar" value="Aceptar" icon="ui-icon-check" ajax="false"/>
                             <p:commandButton action="HistorialMedicLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false"/> 

@@ -21,9 +21,12 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
+                         <p:panel header="HistorialMedicConfirmar" footer="Pie de Panel">
+                             <p:growl life="13000"/>
                        
                         <p:panelGrid columns="2">
                             
+                        
                             <p:outputLabel value="Fecha:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -46,9 +49,12 @@
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
                             <p:outputLabel value="Nombre de Vacunas:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas"/>
-                            <p:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar" ajax="false"/>
-                            <p:commandButton action="HistorialMedicCrearEditar" value="Cancelar" ajax="false"/>
+                            <p:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="HistorialMedicCrearEditar" value="Cancelar" icon="ui-icon-closethick" ajax="false"/>
+                        
+
                         </p:panelGrid>
+                         </p:panel>
                     </h:form>
                 </f:view>
 

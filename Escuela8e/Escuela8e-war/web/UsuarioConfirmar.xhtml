@@ -21,11 +21,11 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <p:panel header="AlumnoConfirmar" footer="Pie de Panel">
+                        <p:panel header="Usuario Confirmar" footer="Pie de Panel">
                         <p:growl life="13000"/>
                         
-                        <h:panelGrid columns="2">
-                             <p:outputLabel value="No.Control:"/>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="No.Control:"/>
                             <p:outputLabel value="#{studentBean.student.noControl}" title="NoControl"/>
                             <p:outputLabel value="Nombre:"/>
                             <p:outputLabel value="#{studentBean.student.nombre}" title="Nombre"/>
@@ -47,9 +47,9 @@
                             </p:outputLabel>
                             <p:outputLabel value="Id Perfil:"/>
                             <p:outputLabel value="#{studentBean.student.idPerfil}" title="IdPerfil"/>
-                            <p:commandButton action="#{studentBean.procesarAccion}" value="Aceptar" ajax="false"/>
-                            <p:commandButton action="AlumnoCrearEditar" value="Cancelar" ajax="false"/>
-                        </h:panelGrid>
+                            <p:commandButton action="#{studentBean.procesarAccion}" value="Aceptar" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="UsuarioCrearEditar" value="Cancelar" icon="ui-icon-closethick" ajax="false"/>
+                        </p:panelGrid>
                          </p:panel>
                     </h:form>
                 </f:view>
