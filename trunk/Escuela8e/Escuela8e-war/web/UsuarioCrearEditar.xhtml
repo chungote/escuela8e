@@ -16,13 +16,13 @@
             </ui:define>
 
             <ui:define name="left">
-                left
+               
             </ui:define>
 
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <p:panel header="AlumnoCraerEditar" footer="Pie de Panel">
+                        <p:panel header="Usuario Craer Editar" footer="Pie de Panel">
                         <p:growl life="13000"/>
                         
                         <p:panelGrid columns="2">
@@ -31,26 +31,26 @@
                                 <f:validateLongRange minimum="100" maximum="10000"/> 
                             </p:inputMask>    
                             <p:outputLabel value="Nombre:" for="nombre" />
-                            <p:inputText id="nombre" value="#{studentBean.student.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
-                                 <f:validateLength minimum="3" maximum="45"/> 
+                            <p:inputText id="nombre" value="#{studentBean.student.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             <p:outputLabel value="Apellido Paterno:" for="apellidoPaterno" />
-                            <p:inputText id="apellidoPaterno" value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="El apellido Solo acepta letras minusculas">
-                                <f:validateRegex pattern="[a-z]+"/>
+                            <p:inputText id="apellidoPaterno" value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/>
                             </p:inputText>
                             <p:outputLabel value="Apellido Materno:" for="apellidoMaterno" />
-                            <p:inputText id="apellidoMaterno" value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="El apellido Solo acepta letras minusculas">
-                                <f:validateRegex pattern="[a-z]+"/>
+                            <p:inputText id="apellidoMaterno" value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/>
                             </p:inputText>
                             <p:outputLabel value="Telefono:" for="telefono" />
                             <p:inputMask id="telefono" value="#{studentBean.student.telefono}" mask="(999) 999-9999" title="Telefono" validatorMessage="El telefono solo acepta numeros"/>
                             <p:outputLabel value="Direccion:" for="direccion" />
-                            <p:inputText id="direccion" value="#{studentBean.student.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required." validatorMessage="La Direccion debe ser entre 3 y 45 letras">
-                                <f:validateLength minimum="3" maximum="25"/> 
+                            <p:inputText id="direccion" value="#{studentBean.student.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required." validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText> 
                             <p:outputLabel value="Colonia:" for="colonia" />
-                            <p:inputText id="colonia" value="#{studentBean.student.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="La Colonia debe ser entre 3 y 45 letras">
-                                 <f:validateLength minimum="3" maximum="25"/> 
+                            <p:inputText id="colonia" value="#{studentBean.student.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="La primer Letra debe ser Mayuscula">
+                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
                             </p:inputText>
                             <p:outputLabel value="Codigo Postal:" for="codigoPostal" />
                             <p:inputMask id="codigoPostal" value="#{studentBean.student.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required."/>
@@ -63,8 +63,8 @@
                                <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{studentBean.listaPerfil}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.id}"/>
                             </h:selectOneMenu>
-                            <p:commandButton action="AlumnoConfirmar" value="Aceptar" actionListener="#{studentBean.agregarPerfil}" icon="ui-icon-check" ajax="false"/>
-                            <p:commandButton action="AlumnoLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false" />
+                            <p:commandButton action="UsuarioConfirmar" value="Aceptar" actionListener="#{studentBean.agregarPerfil}" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="UsuarioLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false" />
                                      
                         </p:panelGrid>
                         </p:panel>

@@ -13,10 +13,9 @@
             <ui:define name="top">
                    <h:form>
                        <center>
-                    <p:commandButton value="Modulo de Alumno" action="AlumnoLista" ajax="false"/>
-                    <p:commandButton value="Modulo Docente" action="DocenteLista" ajax="false"/>
-                    <p:commandButton value="Modulo Historial Medico" action="HistorialMedicLista" ajax="false"/>
-                    <p:commandButton value="Modulo Perfil" action="PerfilLista" ajax="false"/>
+                    <p:commandButton value="Modulo de Alumno" action="AlumnoLista" icon="ui-icon-person" ajax="false"/>
+                    <p:commandButton value="Modulo Historial Medico" action="HistorialMedicLista" icon="ui-icon-person" ajax="false"/>
+                    <p:commandButton value="Modulo Perfil" action="PerfilLista" icon="ui-icon-person" ajax="false"/>
                     </center>
                    </h:form>
             </ui:define>
@@ -36,7 +35,7 @@
                            
                             <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="NoControl"/>
+                                    <p:outputLabel value="No.Control"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.noControl}"/>
                             </p:column>
@@ -48,13 +47,13 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="ApellidoPaterno"/>
+                                    <p:outputLabel value="Apellido Paterno"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.apellidoPaterno}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="ApellidoMaterno"/>
+                                    <p:outputLabel value="Apellido Materno"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.apellidoMaterno}"/>
                             </p:column>
@@ -67,7 +66,7 @@
                                                                                
                              <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="IdPerfil"/>
+                                    <p:outputLabel value="Id del Perfil"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.idPerfil}"/>
                             </p:column>
@@ -87,28 +86,27 @@
                                      <f:setPropertyActionListener value="#{item}" target="#{teachingBean.teaching}"/>
                                 </p:commandButton>
                             </p:column>
-                            <p:column>
+                             <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Detalle"/>
                                 </f:facet>
-                                <p:commandButton update=":formulario:panel" onclick="dialogo.show();" icon="ui-icon-search">
-                                    <f:setPropertyActionListener value="#{item}" target="#{teachingBean.teaching}"/>
-                                </p:commandButton>
+                                 <p:commandButton update=":formulario:panel" onclick="dialogo.show();" icon="ui-icon-search">
+                                     <f:setPropertyActionListener value="#{item}" target="#{teachingBean.teaching}"/>
+                                 </p:commandButton>
                             </p:column>
                         </p:dataTable>
                         <p:dialog widgetVar="dialogo" modal="true">
                            
-                                
                             <h:panelGrid id="panel" columns="2">
                                     <h:outputText value="Id:"/>
                                     <h:outputText value="#{teachingBean.teaching.id}" title="Id"/>
-                                    <h:outputText value="NoControl:"/>
+                                    <h:outputText value="No.Control:"/>
                                     <h:outputText value="#{teachingBean.teaching.noControl}" title="NoControl"/>
                                     <h:outputText value="Nombre:"/>
                                     <h:outputText value="#{teachingBean.teaching.nombre}" title="Nombre"/>
-                                    <h:outputText value="ApellidoPaterno:"/>
+                                    <h:outputText value="Apellido Paterno:"/>
                                     <h:outputText value="#{teachingBean.teaching.apellidoPaterno}" title="ApellidoPaterno"/>
-                                    <h:outputText value="ApellidoMaterno:"/>
+                                    <h:outputText value="Apellido Materno:"/>
                                     <h:outputText value="#{teachingBean.teaching.apellidoMaterno}" title="ApellidoMaterno"/>
                                     <h:outputText value="Telefono:"/>
                                     <h:outputText value="#{teachingBean.teaching.telefono}" title="Telefono"/>
@@ -116,15 +114,17 @@
                                     <h:outputText value="#{teachingBean.teaching.direccion}" title="Direccion"/>
                                     <h:outputText value="Colonia:"/>
                                     <h:outputText value="#{teachingBean.teaching.colonia}" title="Colonia"/>
-                                    <h:outputText value="CodigoPostal:"/>
+                                    <h:outputText value="Codigo Postal:"/>
                                     <h:outputText value="#{teachingBean.teaching.codigoPostal}" title="CodigoPostal"/>
-                                    <h:outputText value="FechaNacimiento:"/>
+                                    <h:outputText value="Fecha de Nacimiento:"/>
                                     <h:outputText value="#{teachingBean.teaching.fechaNacimiento}" title="FechaNacimiento">
                                         <f:convertDateTime pattern="MM/dd/yyyy" />
                                     </h:outputText>
-                                    <h:outputText value="IdPerfil:"/>
+                                    <h:outputText value="Id del Perfil:"/>
                                     <h:outputText value="#{teachingBean.teaching.idPerfil}" title="IdPerfil"/>
                                 </h:panelGrid>
+                           
+
                             
 
                         </p:dialog>
