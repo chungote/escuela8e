@@ -11,11 +11,11 @@
         <ui:composition template="./TemplatePrincipal.xhtml">
 
             <ui:define name="top">
-                top
+               
             </ui:define>
 
             <ui:define name="left">
-                left
+                
             </ui:define>
 
             <ui:define name="content">
@@ -27,8 +27,8 @@
                         <p:panelGrid columns="2">
                             
                             <p:outputLabel value="Nombre:" for="nombre" />
-                            <p:inputText id="nombre" value="#{profileBean.profile.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre debe ser entre 3 y 45 letras">
-                                <f:validateLength minimum="3" maximum="45"/> 
+                            <p:inputText id="nombre" value="#{profileBean.profile.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="Solo acepta letras">
+                                <f:validateRegex pattern="^[A-Za-z\s]+$"/> 
                             </p:inputText>
                             <p:commandButton action="PerfilConfirmar" value="Aceptar" icon="ui-icon-check" ajax="false"/>
                             <p:commandButton action="PerfilLista" value="Cancelar" immediate="true" icon="ui-icon-closethick" ajax="false"/> 

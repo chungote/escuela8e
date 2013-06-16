@@ -31,26 +31,26 @@
                                 <f:validateLongRange minimum="100" maximum="10000"/> 
                             </p:inputMask>    
                             <p:outputLabel value="Nombre:" for="nombre" />
-                            <p:inputText id="nombre" value="#{studentBean.student.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="La primer Letra debe ser Mayuscula">
-                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
+                            <p:inputText id="nombre" value="#{studentBean.student.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required." validatorMessage="El nombre solo acepta letras">
+                                <f:validateRegex pattern="^[A-Za-z\s]+$"/> 
                             </p:inputText>
                             <p:outputLabel value="Apellido Paterno:" for="apellidoPaterno" />
-                            <p:inputText id="apellidoPaterno" value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="La primer Letra debe ser Mayuscula">
-                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/>
+                            <p:inputText id="apellidoPaterno" value="#{studentBean.student.apellidoPaterno}" title="ApellidoPaterno" required="true" requiredMessage="The ApellidoPaterno field is required." validatorMessage="Solo acepta letras">
+                                <f:validateRegex pattern="^[A-Za-z\s]+$"/>
                             </p:inputText>
                             <p:outputLabel value="Apellido Materno:" for="apellidoMaterno" />
-                            <p:inputText id="apellidoMaterno" value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="La primer Letra debe ser Mayuscula">
-                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/>
+                            <p:inputText id="apellidoMaterno" value="#{studentBean.student.apellidoMaterno}" title="ApellidoMaterno" validatorMessage="Solo acepta letras">
+                                <f:validateRegex pattern="^[A-Za-z\s]+$"/>
                             </p:inputText>
                             <p:outputLabel value="Telefono:" for="telefono" />
                             <p:inputMask id="telefono" value="#{studentBean.student.telefono}" mask="(999) 999-9999" title="Telefono" validatorMessage="El telefono solo acepta numeros"/>
                             <p:outputLabel value="Direccion:" for="direccion" />
-                            <p:inputText id="direccion" value="#{studentBean.student.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required." validatorMessage="La primer Letra debe ser Mayuscula">
-                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
+                            <p:inputText id="direccion" value="#{studentBean.student.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required." validatorMessage="La Direccion tiene que tener minimo 3 caracteres y maximo 45">
+                                <f:validateLength minimum="3" maximum="45"/> 
                             </p:inputText> 
                             <p:outputLabel value="Colonia:" for="colonia" />
-                            <p:inputText id="colonia" value="#{studentBean.student.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="La primer Letra debe ser Mayuscula">
-                                <f:validateRegex pattern="((([A-Z]{1}[a-z]+)(\s[A-Z]{1}[a-z]+)?)(\s[A-Za-z|0-9]+)?)"/> 
+                            <p:inputText id="colonia" value="#{studentBean.student.colonia}" title="Colonia" required="true" requiredMessage="The Colonia field is required." validatorMessage="Solo acepta letras">
+                                <f:validateRegex pattern="^[A-Za-z\s]+$"/> 
                             </p:inputText>
                             <p:outputLabel value="Codigo Postal:" for="codigoPostal" />
                             <p:inputMask id="codigoPostal" value="#{studentBean.student.codigoPostal}" mask="99999" title="CodigoPostal" required="true" requiredMessage="The CodigoPostal field is required."/>

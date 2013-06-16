@@ -11,56 +11,44 @@
         <ui:composition template="./TemplatePrincipal.xhtml">
 
             <ui:define name="top">
-                top
+               
             </ui:define>
 
             <ui:define name="left">
-                left
+                
+                             
+                           
             </ui:define>
 
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                         <p:panel header="HistorialMedicConfirmar" footer="Pie de Panel">
+                        <p:panel header="Historial Medico Confirmar" footer="Pie de Panel">
                              <p:growl life="13000"/>
-                       
                         <p:panelGrid columns="2">
-                            
-                        
-                            <p:outputLabel value="Fecha:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </p:outputLabel>
-                            <p:outputLabel value="Nombre:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre"/>
-                            <p:outputLabel value="Apellido Paterno:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno"/>
-                            <p:outputLabel value="Apellido Materno:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno"/>
+                            <p:outputLabel value="Id:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.id}" title="Id"/>
                             <p:outputLabel value="Edad:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
-                            <p:outputLabel value="Sexo:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo"/>
-                            <p:outputLabel value="Fecha de Nacimiento:"/>
-                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento"/>
-                            <p:outputLabel value="Tipo de Enfermedades:"/>
+                            <p:outputLabel value="Nombre de Enfermedades:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades"/>
                             <p:outputLabel value="Numero de Vacunas:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
                             <p:outputLabel value="Nombre de Vacunas:"/>
                             <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas"/>
+                            <p:outputLabel value="Id del Alumno:"/>
+                            <p:outputLabel value="#{medicalHistoryBean.medicalHistory.idAlumno}" title="IdAlumno"/>
+                            
                             <p:commandButton action="#{medicalHistoryBean.procesarAccion}" value="Aceptar" icon="ui-icon-check" ajax="false"/>
                             <p:commandButton action="HistorialMedicCrearEditar" value="Cancelar" icon="ui-icon-closethick" ajax="false"/>
                         
-
+                        
                         </p:panelGrid>
-                         </p:panel>
+                        </p:panel>
                     </h:form>
                 </f:view>
 
-
-
-
+                       
             </ui:define>
 
         </ui:composition>
