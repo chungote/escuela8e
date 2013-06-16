@@ -11,11 +11,11 @@
         <ui:composition template="./TemplatePrincipal.xhtml">
 
             <ui:define name="top">
-                top
+                
             </ui:define>
 
             <ui:define name="left">
-                left
+                
             </ui:define>
 
             <ui:define name="content">
@@ -26,8 +26,8 @@
                             
                             <p:outputLabel value="Nombre:"/>
                             <p:outputLabel value="#{profileBean.profile.nombre}" title="Nombre"/>
-                            <p:commandButton action="#{profileBean.procesarAccion}" value="Aceptar" ajax="false"/>
-                            <p:commandButton action="PerfilCrearEditar" value="Cancelar" ajax="false"/>
+                            <p:commandButton action="#{profileBean.procesarAccion}" value="Aceptar" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton action="PerfilCrearEditar" value="Cancelar" icon="ui-icon-closethick" ajax="false"/>
                        
                         </p:panelGrid>
                     </h:form>

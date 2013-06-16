@@ -21,18 +21,17 @@
             </ui:define>
 
             <ui:define name="left">
-                left
+                
             </ui:define>
 
             <ui:define name="content">
                 <h1> Lista de Historiales</h1><br/>
                 <f:view>
-                   
                     <h:form id="formulario">
-                        <br/>
+                         <br/>
                         <p:commandButton action="HistorialMedicCrearEditar" value="Registar Historial" actionListener="#{medicalHistoryBean.prepararNuevo}" icon="ui-icon-note" ajax="false"/>
                         <br/>
-
+                      
                         <p:dataTable value="#{medicalHistoryBean.lista}" var="item" paginator="true" rows="2">
                             <p:column>
                                 <f:facet name="header">
@@ -40,21 +39,12 @@
                                 </f:facet>
                                 <p:outputLabel value="#{item.id}"/>
                             </p:column>
-                           
-                 
-                            <p:column filterBy="#{item.edad}">
+                            <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Edad"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.edad}"/>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <p:outputLabel value="Sexo"/>
-                                </f:facet>
-                                <p:outputLabel value="#{item.sexo}"/>
-                            </p:column>
-                            
                             <p:column>
                                 <f:facet name="header">
                                     <p:outputLabel value="Enfermedades"/>
@@ -63,15 +53,21 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="NoVacunas"/>
+                                    <p:outputLabel value="Numero de Vacunas"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.noVacunas}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <p:outputLabel value="NomVacunas"/>
+                                    <p:outputLabel value="Nombre de Vacunas"/>
                                 </f:facet>
                                 <p:outputLabel value="#{item.nomVacunas}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.idAlumno}">
+                                <f:facet name="header">
+                                    <p:outputLabel value="Id del Alumno"/>
+                                </f:facet>
+                                <p:outputLabel value="#{item.idAlumno}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
@@ -99,42 +95,25 @@
                             </p:column>
                         </p:dataTable>
                         <p:dialog widgetVar="dialogo" modal="true">
-                           
-                                
-                            <h:panelGrid id="panel" columns="2">
-                                    <h:outputText value="Id:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.id}" title="Id"/>
-                                    <h:outputText value="Fecha:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.fecha}" title="Fecha">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                    <h:outputText value="Nombre:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.nombre}" title="Nombre"/>
-                                    <h:outputText value="ApellidoPaterno:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoPaterno}" title="ApellidoPaterno"/>
-                                    <h:outputText value="ApellidoMaterno:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.apellidoMaterno}" title="ApellidoMaterno"/>
-                                    <h:outputText value="Edad:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
-                                    <h:outputText value="Sexo:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.sexo}" title="Sexo"/>
-                                    <h:outputText value="FechaNacimiento:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.fechaNacimiento}" title="FechaNacimiento">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                    <h:outputText value="Enfermedades:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades"/>
-                                    <h:outputText value="NoVacunas:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
-                                    <h:outputText value="NomVacunas:"/>
-                                    <h:outputText value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas"/>
-                                </h:panelGrid>
-                           
+                            
+                                <p:panelGrid id="panel" columns="2">
+                                    <p:outputLabel value="Id:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.id}" title="Id"/>
+                                    <p:outputLabel value="Edad:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.edad}" title="Edad"/>
+                                    <p:outputLabel value="Enfermedades:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.enfermedades}" title="Enfermedades"/>
+                                    <p:outputLabel value="NoVacunas:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.noVacunas}" title="NoVacunas"/>
+                                    <p:outputLabel value="NomVacunas:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.nomVacunas}" title="NomVacunas"/>
+                                    <p:outputLabel value="IdAlumno:"/>
+                                    <p:outputLabel value="#{medicalHistoryBean.medicalHistory.idAlumno}" title="IdAlumno"/>
+                                </p:panelGrid>
+                            
 
                         </p:dialog>
                     </h:form>
-              
-
                 </f:view>
 
             </ui:define>
